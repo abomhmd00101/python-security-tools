@@ -1,26 +1,23 @@
-import requests                                        #هاي المكتبة متخصصه في المواقع بحيث انها بتجيب الريكويستات من المواقع
+import requests
 
-#url = input('Enter URL(without http://): ')
-url = "google.com"
+# Use only against domains you own or are authorized to test.
+target_domain = "google.com"
+wordlist_path = "/home/kali/Desktop/subdomains.txt"
 
 
-def request(url):
+def probe(hostname):
     try:
-        request = requests.get("https://" + url)       # request.get يعني هات الريسبونس تبع الموقع اللي بدي اعطيه اياه (200و404و300) الخخ
-        if request.status_code == 200:
-            print(request,"https://"+url )   
-            
-        else:
-        	pass
-        
-        
-        
-    except requests.exceptions.ConnectionError :
-        print("[-] Connection Error " ,"https://" + url)
+        response = requests.get(f"https://{hostname}", timeout=5)
+        if response.status_code == 200:
+            print(response, f"https://{hostname}")
+    except requests.exceptions.ConnectionError:
+        print("[-] Connection error", f"https://{hostname}")
+    except requests.exceptions.Timeout:
+        print("[-] Request timed out", f"https://{hostname}")
 
 
-
-with open("/home/kali/Desktop/subdomains.txt") as words_file:
+with open(wordlist_path, encoding="utf-8") as words_file:
     for line in words_file:
-        line = line.strip()
-        request(line + "." + url)      #earth
+        subdomain = line.strip()
+        if subdomain:
+            probe(f"{subdomain}.{target_domain}")

@@ -1,8 +1,8 @@
 import requests
 
 # Use only against domains you own or are authorized to test.
-target_domain = "google.com"
-wordlist_path = "/home/kali/Desktop/subdomains.txt"
+target_domain = "exaple.com"
+wordlist_path = "subdomains.txt"
 
 
 def probe(hostname):

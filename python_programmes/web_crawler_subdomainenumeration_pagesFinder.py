@@ -11,7 +11,7 @@ def request(url):
         pass
 
 
-target_url = "0a71002604e041908054c20c00770054.web-security-academy.net/"
+target_url = "example.com"
 
 with open("/home/kali/Desktop/raft-small-files_fuzzing.txt") as wordlist_file:
      	

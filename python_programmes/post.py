@@ -11,7 +11,7 @@ def request(url):
 
 
 
-target_url = 'https://officemaxpal.com'
+target_url = 'https://example.com'
 response = request(target_url)
 
 parsed_html = BeautifulSoup(response.content.decode(), "html.parser")

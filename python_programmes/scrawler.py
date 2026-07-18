@@ -1,7 +1,7 @@
 import requests
 
 target = "https://192.168.9.114/"
-wordlist_path = "/home/kali/Desktop/subdomains.txt"
+wordlist_path = "subdomains.txt"
 
 
 def request(url):
